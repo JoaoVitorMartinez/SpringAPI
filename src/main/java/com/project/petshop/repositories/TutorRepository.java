@@ -26,7 +26,7 @@ public class TutorRepository {
         return false;
     }
 
-    public Tutor findById(int id) {
+    public Tutor findById(Integer id) {
         for (Tutor tutor :
                 tutores) {
             if (id == tutor.getId()) {
