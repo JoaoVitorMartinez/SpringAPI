@@ -1,6 +1,7 @@
 package com.project.petshop.repositories;
 
 import com.project.petshop.models.Pet;
+import com.project.petshop.models.Tutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -54,11 +55,12 @@ public class PetRepository {
         return ++this.id;
     }
 
-    public Pet edit(int id, Pet pet) {
+    public Pet edit(int id, Pet pet, Tutor tutor) {
         if (findById(id) != null){
             Pet petEdicao = findById(id);
             petEdicao.setNome(pet.getNome());
             petEdicao.setRaca(pet.getRaca());
+            petEdicao.setTutor(tutor);
 
             return petEdicao;
         }

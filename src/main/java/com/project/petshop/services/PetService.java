@@ -19,8 +19,9 @@ public class PetService {
     public Pet save(Pet pet) {
         if (tutorRepository.findById(pet.getTutor().getId()) == null){
             tutorRepository.save(pet.getTutor());
+            return petRepository.save(pet);
         }
-
+        pet.setTutor(tutorRepository.findById(pet.getTutor().getId()));
         return petRepository.save(pet);
     }
 
@@ -29,7 +30,8 @@ public class PetService {
     }
 
     public Pet edit(int id, Pet pet){
-        return petRepository.edit(id, pet);
+
+        return petRepository.edit(id, pet, tutorRepository.findById(pet.getTutor().getId()));
     }
 
     public boolean delete(Integer id) {
